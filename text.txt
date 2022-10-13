@@ -1,0 +1,7 @@
+/lepython3
+To show a figure, it is compulsory to:
+- save the figure with the name `plt.savefig("myfig.png")`
+- do not use show it  `plt.show()`
+```py abc
+print("hello")
+```
