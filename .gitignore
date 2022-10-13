@@ -6,3 +6,7 @@ venv/*
 poetry.lock
 pyproject.toml
 replit.nix
+.breakpoints
+
+# hidden token 
+code/hidden_token.py

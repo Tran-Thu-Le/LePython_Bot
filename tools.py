@@ -68,7 +68,7 @@ def text_to_code(text):
             ids += [i]
 
     if not len(ids) == 2:
-        return "", False  #code, bool_plt_show
+        return "", False  # code, bool_plt_show
 
     for i in range(ids[0] + 1, ids[1]):
         # print(i, sentences[i])

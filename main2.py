@@ -3,10 +3,6 @@ from webserver import keep_alive
 import discord
 from tools import execute
 
-intents = discord.Intents.all()
-client = discord.Client(intents=intents)
-# see https://stackoverflow.com/questions/70920148/pycord-message-content-is-empty
-
 
 @client.event
 async def on_ready():
@@ -18,7 +14,7 @@ async def on_message(message):
     if message.content.startswith("/lepython3") or message.content.startswith(
             "/py"):
         print("main2.py is running")
-        #1. work with result
+        # 1. work with result
         print(
             f"User={message.author.name} requests for executing Python3 code.")
         out, bool_plt_show = execute(message.content)
@@ -38,8 +34,9 @@ async def on_message(message):
         except:
             print("error here")
 
-
+intents = discord.Intents.all()
+client = discord.Client(intents=intents)
+# see https://stackoverflow.com/questions/70920148/pycord-message-content-is-empty
 # keep_alive()
 my_secret = os.environ['TOKEN']
 client.run(my_secret)
-

@@ -8,7 +8,8 @@ def discord_sim(text, user):
     print("------ Discord simulation is activating")
     if text.startswith("/lepython3") or text.startswith("/py"):
 
-        #1. work with result
+        # 1. work with result
+        print("-" * 40)
         print(f"User={user} requests for executing Python3 code.")
         out, bool_plt_show = execute(text)
         deco = "**Result:**\n"
@@ -23,10 +24,11 @@ def discord_sim(text, user):
             print("Figure sent")
 
         print(f"User={user} got the results.")
-        print("-" * 20)
+        # print("-" * 20)
         print("------ Discord simulation is done")
 
 
-with open("text.txt", "r") as f:
-    text = f.read()
-discord_sim(text=text, user="Le")
+if __name__ == "__main__":
+    with open("test/text_0.txt", "r") as f:
+        text = f.read()
+    discord_sim(text=text, user="Le")
