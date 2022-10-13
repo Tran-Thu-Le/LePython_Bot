@@ -1,34 +1,83 @@
-from tools import execute, text_to_code
-
-# print(execute(text))
-# print(text_to_code(text))
+from lepythonbot.bot import text_to_code, execute
 
 
 def discord_sim(text, user):
     print("------ Discord simulation is activating")
-    if text.startswith("/lepython3") or text.startswith("/py"):
+    text_report = text_to_code(text)
+    if text_report["end_process"]:
+        if text_report["error"] != "":
+            print("LePythonBot sent error!")
+        else:
+            print("no error no code")
+            pass
+    else:
+        report = execute(text_report["code"])
 
-        # 1. work with result
-        print("-" * 40)
-        print(f"User={user} requests for executing Python3 code.")
-        out, bool_plt_show = execute(text)
-        deco = "**Result:**\n"
-        out = "```\n" + out + "\n```"
-        print(deco + out)
+        if report["result"] != "":
+            print(report["result"])
+            print("LePythonBot sent result!")
+        if report["error"] != "":
+            print(report["error"])
+            print("LePythonBot sent error!")
+        if report["picture"] != "":
+            print(report["picture"])
+            print("LePythonBot sent picture!")
 
-        # 2. work with figure
-        if bool_plt_show:
-            # with open("myfig.png", 'rb') as f:
-            #     picture = discord.File(f)
-            # await message.channel.send(file=picture)
-            print("Figure sent")
+        # print("end process here")
 
-        print(f"User={user} got the results.")
-        # print("-" * 20)
-        print("------ Discord simulation is done")
+    print("------ Discord simulation is done")
 
+
+TEXT_err1 = """/py 
+
+"""
+
+TEXT_err2 = """/py 
+```
+"""
+
+
+TEXT_err3 = """/py 
+```
+import os
+print("rose")
+```
+"""
+
+TEXT1 = """/py 
+```py
+print("Hello from TEXT1")
+print("rose")
+```
+"""
+
+TEXT2 = """/py 
+```py
+print("Hello from TEXT2")
+import numpy as np 
+# a = np.arange(1, 10)
+# print(a**2)
+```
+"""
+
+TEXT3_err = """/py 
+```py
+print("Hello from TEXT3")
+import numpy as np 
+import matplotlib.pyplot as plt 
+a = np.linspace(0, 10, 100)
+b = np.sin(a)
+plt.plot(a, b)
+plt.show()
+```
+"""
+
+TEXT4_err = """/py 
+```py
+import matplotlib 
+```
+"""
 
 if __name__ == "__main__":
-    with open("test/text_0.txt", "r") as f:
-        text = f.read()
-    discord_sim(text=text, user="Le")
+    # discord_sim(text=TEXT_err3, user="Le")
+    discord_sim(text=TEXT3_err, user="Le")
