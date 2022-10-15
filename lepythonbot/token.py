@@ -8,7 +8,7 @@ def get_token():
     try:
         farther_folder = os.getcwd().split("/")[-2]
         if farther_folder == "github":
-            from lepythonbot.hidden_token import TOKEN
+            from lepythonbot.hide import TOKEN
             token = TOKEN
         else:
             token = os.environ["TOKEN"]
