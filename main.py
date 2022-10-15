@@ -56,5 +56,5 @@ if __name__ == "__main__":
     my_secret = get_token()
     # my_secret = os.environ['TOKEN']
     # # see https://stackoverflow.com/questions/70920148/pycord-message-content-is-empty
-    # keep_alive()
+    keep_alive()
     client.run(my_secret)

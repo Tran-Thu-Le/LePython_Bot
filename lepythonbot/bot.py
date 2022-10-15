@@ -140,7 +140,7 @@ def execute(code):
         print("a figure has been saved")
         with open("lepythonbot/picture.png", 'rb') as fpicture:
             report["picture"] = discord.File(fpicture)
-    os.remove("lepythonbot/picture.png")
+        os.remove("lepythonbot/picture.png")
 
     # report["end_process"] = True
 
